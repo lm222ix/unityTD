@@ -17,13 +17,12 @@ public class move : MonoBehaviour {
 	void Start () {
 		currentIndex = 0;
 		maxSpeed = 2;
-		speed = 0.05f;
+		speed = 3f;
 		rb  = gameObject.GetComponent<Rigidbody> ();
 
-
+		goal = GameObject.Find ("goal");
 		points = new List<GameObject>();
 		findPoints ();
-		goal = GameObject.Find ("goal");
 
 		currentPoint =  points[currentIndex];
 		currentPointPos = currentPoint.GetComponent<Transform> ().position;
@@ -31,25 +30,41 @@ public class move : MonoBehaviour {
 
 	void findPoints() {
 		IEnumerable<GameObject> c = GameObject.FindGameObjectsWithTag ("point");
-		points.AddRange (c);
+		foreach(GameObject go in c) {
+			points.Add(go);
+		}
+		points.Sort (delegate(GameObject one, GameObject two) {
+			return one.name.CompareTo (two.name);
+		});
+
+		//Lastly add goal as the last point to go to.
+		points.Add (goal);
 
 	}
 	
 	void OnCollisionEnter(Collision col) {
 		if (col.gameObject.name == "goal") {
 			Destroy (this.gameObject);
-			//Destroy(col.gameObject);
+			//"Life lost" todo
 		} else if (col.gameObject.CompareTag ("point")) {
-			rb.AddForce(new Vector3(0,0,0));
 			currentIndex += 1;
-			currentPoint = points [currentIndex];
-			Destroy(col.gameObject);
-			print (currentIndex);
-			print (currentPoint.name);
+			if(currentIndex==points.Count) {
+				currentPoint = goal;
+			} else {
+				currentPoint = points [currentIndex];
+			}
 		}
 	}
-
-	// Update is called once per frame
+	/*public void nextPoint() {
+			currentIndex += 1;
+			if (currentIndex == points.Count) {
+				currentPoint = goal;
+			} else {
+				currentPoint = points [currentIndex];
+			}
+		}
+*/
+				// Update is called once per frame
 	void Update () {
 		//*
 		//if (rb.position.x < goalPos.x) {
@@ -59,8 +74,10 @@ public class move : MonoBehaviour {
 //			rb.AddForce(new Vector2(1,goalPos.y));
 //		}
 		//*
-		if (rb.velocity.magnitude < maxSpeed) {		//Limits to maxspeed
-			rb.AddForce (speed * new Vector3(currentPoint.GetComponent<Transform>().position.x, 0, currentPoint.GetComponent<Transform>().position.z));
-		}
+		//if (rb.velocity.magnitude < maxSpeed) {		//Limits to maxspeed
+			float step = speed * Time.deltaTime;
+			transform.position = Vector3.MoveTowards(transform.position, currentPoint.transform.position, step);
+			//rb.AddForce (speed * new Vector3(currentPoint.GetComponent<Transform>().position.x, 0, currentPoint.GetComponent<Transform>().position.z));
+		//	}
 	}
 }

@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\ControllerScript.cs" />
+     <Compile Include="Assets\builderScript.cs" />
      <Compile Include="Assets\move.cs" />
+     <Compile Include="Assets\pointScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
