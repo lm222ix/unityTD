@@ -11,8 +11,9 @@ GameObject:
   - 33: {fileID: 3324780}
   - 65: {fileID: 6583530}
   - 23: {fileID: 2310580}
-  - 114: {fileID: 11476704}
   - 54: {fileID: 5497794}
+  - 114: {fileID: 11458336}
+  - 114: {fileID: 11494868}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 135756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 13, y: 1.5, z: -6}
-  m_LocalScale: {x: .5, y: .5, z: .5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -50,8 +51,10 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
@@ -70,9 +73,9 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135756}
   serializedVersion: 2
-  m_Mass: .100000001
+  m_Mass: 0.1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -90,7 +93,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11476704
+--- !u!114 &11458336
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -98,10 +101,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 135756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03c6a6a91fff5994198c33384182c85e, type: 3}
+  m_Script: {fileID: 11500000, guid: 50bfd46fa16b5b84ab2e84a27d993e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: .100000001
+  maxHP: 100
+  currentHP: 100
+  hpBar: {fileID: 2800000, guid: cedf37fbcd4bd57468a38418cefa5723, type: 3}
+--- !u!114 &11494868
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d08cf0dad8b8c5d4a8afc6f8da5739b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
   maxSpeed: 0
   goal: {fileID: 0}
 --- !u!1001 &100100000
@@ -110,7 +127,35 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b016ff4a50f60a45925e13cb4abdc4a, type: 2}
+    - target: {fileID: 0}
+      propertyPath: hpBar
+      value: 
+      objectReference: {fileID: 2800000, guid: cedf37fbcd4bd57468a38418cefa5723, type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 135756}

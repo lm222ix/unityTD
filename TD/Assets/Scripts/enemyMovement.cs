@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class move : MonoBehaviour {
+public class enemyMovement : MonoBehaviour {
 
 	public float speed;
 	public float maxSpeed;
@@ -55,29 +55,13 @@ public class move : MonoBehaviour {
 			}
 		}
 	}
-	/*public void nextPoint() {
-			currentIndex += 1;
-			if (currentIndex == points.Count) {
-				currentPoint = goal;
-			} else {
-				currentPoint = points [currentIndex];
-			}
-		}
-*/
-				// Update is called once per frame
-	void Update () {
-		//*
-		//if (rb.position.x < goalPos.x) {
 
-//		}
-//		if (rb.position.z < goalPos.z) {
-//			rb.AddForce(new Vector2(1,goalPos.y));
-//		}
-		//*
-		//if (rb.velocity.magnitude < maxSpeed) {		//Limits to maxspeed
+	void Update () {
+
 			float step = speed * Time.deltaTime;
 			transform.position = Vector3.MoveTowards(transform.position, currentPoint.transform.position, step);
-			//rb.AddForce (speed * new Vector3(currentPoint.GetComponent<Transform>().position.x, 0, currentPoint.GetComponent<Transform>().position.z));
-		//	}
+
 	}
 }
+
+
