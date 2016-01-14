@@ -18,6 +18,9 @@ public class healthbarscript : MonoBehaviour {
 		//hpBarLocation = cam.WorldToScreenPoint (transform.position);
 		//targetPos = new Vector3();
 	}
+	void takeDMG() {
+		currentHP -= 10.0f;
+	}
 
 	void OnGUI(){
 		if (currentHP > 0) {

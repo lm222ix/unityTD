@@ -55,6 +55,7 @@ public class enemyMovement : MonoBehaviour {
 			}
 		}
 	}
+		
 
 	void Update () {
 

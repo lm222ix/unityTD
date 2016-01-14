@@ -16,7 +16,7 @@ GameObject:
   - 114: {fileID: 11494868}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,7 +138,7 @@ Prefab:
       objectReference: {fileID: 2800000, guid: cedf37fbcd4bd57468a38418cefa5723, type: 3}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
@@ -155,6 +155,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: objectToFollow
+      value: 
+      objectReference: {fileID: 424174}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
